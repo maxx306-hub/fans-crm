@@ -1,0 +1,14 @@
+{
+  "command": {
+    "version": {
+      "allowBranch": "main",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "ignoreChanges": ["**/package.json", "**/package-lock.json"]
+    }
+  },
+  "packages": [
+    "packages/*"
+  ],
+  "version": "independent"
+}

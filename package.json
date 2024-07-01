@@ -1,0 +1,16 @@
+{
+  "name": "fans-crm",
+  "private": false,
+  "description": "A monorepo for Fans CRM API and UI",
+  "scripts": {
+    "build": "lerna run build --parallel",
+    "start:dev": "lerna run start:dev --stream --parallel"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^8.1.5"
+  }
+}
