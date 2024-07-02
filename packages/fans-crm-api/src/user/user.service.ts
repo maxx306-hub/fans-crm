@@ -5,25 +5,29 @@ import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
-
-  constructor(@InjectModel(User) private userRepository: typeof User){ }
+  constructor(@InjectModel(User) private userRepository: typeof User) {}
 
   async create(createUserDto: CreateUserDto) {
-    const user = await this.userRepository.create(createUserDto)
+    const user = await this.userRepository.create(createUserDto);
 
-    return user
+    return user;
   }
 
   async getUserByEmail(email: string) {
-    const user = await this.userRepository.findOne({where: {email}, include: {all: true}})
+    const user = await this.userRepository.findOne({
+      where: { email },
+      include: { all: true },
+    });
 
     return user;
-}
+  }
 
   async findOne(id: number) {
-    const user = await this.userRepository.findOne({where: {
-      id
-    }})
+    const user = await this.userRepository.findOne({
+      where: {
+        id,
+      },
+    });
 
     return user;
   }

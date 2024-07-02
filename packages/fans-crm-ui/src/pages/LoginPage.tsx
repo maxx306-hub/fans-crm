@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../providers/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
 
 const LoginPage = () => {
   const { auth, login } = useAuth();
@@ -29,17 +30,55 @@ const LoginPage = () => {
   });
 
   return (
-    <div>
+    <Container
+      sx={{
+        padding: 5,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Typography component="h1" variant="h5">
+        Sign in
+      </Typography>
+
       <form onSubmit={onSubmit}>
-        <input {...register('email', { required: true })} />
-        {errors.email && <span>This field is required</span>}
+        <Box
+          sx={{
+            gap: 3,
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              gap: 2,
+              alignItems: 'center',
+            }}
+          >
+            <TextField {...register('email', { required: true })} />
+            {errors.email && <span>This field is required</span>}
+          </Box>
 
-        <input {...register('password', { required: true })} type="password" />
-        {errors.password && <span>This field is required</span>}
+          <Box
+            sx={{
+              display: 'flex',
+              gap: 2,
+              alignItems: 'center',
+            }}
+          >
+            <TextField
+              {...register('password', { required: true })}
+              type="password"
+            />
+            {errors.password && <span>This field is required</span>}
+          </Box>
 
-        <input type="submit" />
+          <Button type="submit" variant="contained">
+            Login
+          </Button>
+        </Box>
       </form>
-    </div>
+    </Container>
   );
 };
 

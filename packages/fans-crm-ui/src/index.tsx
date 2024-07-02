@@ -7,6 +7,12 @@ import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './providers/AuthProvider';
 import UserPage from './pages/UserPage';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,6 +28,8 @@ const router = createBrowserRouter([
   },
 ]);
 
+const defaultTheme = createTheme();
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -29,7 +37,10 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={defaultTheme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
