@@ -8,16 +8,23 @@ export class UserService {
 
   constructor(@InjectModel(User) private userRepository: typeof User){ }
 
-  create(createUserDto: CreateUserDto) {
-    const user = this.userRepository.create(createUserDto)
-    return user
+  async create(createUserDto: CreateUserDto) {
+    const user = await this.userRepository.create(createUserDto)
 
+    return user
   }
 
-  findOne(id: number) {
-    const user = this.userRepository.findOne({where: {
+  async getUserByEmail(email: string) {
+    const user = await this.userRepository.findOne({where: {email}, include: {all: true}})
+
+    return user;
+}
+
+  async findOne(id: number) {
+    const user = await this.userRepository.findOne({where: {
       id
     }})
+
     return user;
   }
 }
